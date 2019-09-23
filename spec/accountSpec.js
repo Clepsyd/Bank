@@ -49,6 +49,15 @@ describe('Account', () => {
 
       expect(() => { account.withdraw(101) }).toThrowError("Funds insufficient!");
     });
+
+    it('adds a "debit" transaction to transactions with the correct amount', () => {
+      account.deposit(100);
+      account.withdraw(50);
+      let transaction = account.transactions.slice(-1)[0];
+
+      expect(transaction.amount).toEqual(50);
+      expect(transaction.mode).toEqual("debit");
+    });
   });
 
   describe('#transactions', () => {
