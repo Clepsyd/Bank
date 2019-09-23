@@ -3,8 +3,15 @@ describe('Account', () => {
   const Account = require("../lib/account");
   let account;
 
+  class mockTransaction {
+    constructor(mode, amount) {
+      this.mode = mode;
+      this.amount = amount;
+    }
+  }
+
   beforeEach( () => {
-    account = new Account();
+    account = new Account(mockTransaction);
   });
 
   describe('#balance', () => {
@@ -18,6 +25,14 @@ describe('Account', () => {
       account.deposit(100);
 
       expect(account.balance).toEqual(100);
+    });
+
+    it('adds a "credit" transaction to transactions with the correct amount', () => {
+      account.deposit(100);
+      let transaction = account.transactions[0];
+
+      expect(transaction.amount).toEqual(100);
+      expect(transaction.mode).toEqual("credit");
     });
   });
   
