@@ -28,6 +28,12 @@ describe('Account', () => {
 
       expect(account.balance).toEqual(50);
     });
+
+    it('raises an error if trying to withdraw more than current balance', () => {
+      account.deposit(100);
+
+      expect(() => { account.withdraw(101) }).toThrowError("Funds insufficient!");
+    });
   });
 
   describe('#transactions', () => {
