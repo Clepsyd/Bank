@@ -7,13 +7,14 @@
 |               |withdraw(amount :int) |=> changes balance by -amount,                      |
 |               |                      |=> pushes a "debit" transaction to transactions     |
 |               |                      |=> raises an error if balance - amount < 0          |
-|               |statement*            |=> output a statement of all transactions to stdout |
 |*Transaction*  |processedAt           |=> Date object, reflects moment transaction was made|
 |               |mode                  |=> "credit" or "debit"                              |
 |               |amount                |=> integer                                          |
 |               |balanceAfter          |=> integer                                          |
+|*Statement*    |show                  |=> output a statement of all transactions to stdout |
+|               |_account              |=> account for which the Statement obj. is created  |
 
-_* output for Account#statement should be like so:_
+_* output for Statement#show should be like so:_
 ```
 date || credit || debit || balance
 14/01/2012 || || 500.00 || 2500.00
