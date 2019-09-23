@@ -8,7 +8,7 @@
 |               |                      |=> pushes a "debit" transaction to transactions     |
 |               |                      |=> raises an error if balance - amount < 0          |
 |               |statement*            |=> output a statement of all transactions to stdout |
-|*Transaction*  |date                  |=> Date object, reflects moment transaction was made|
+|*Transaction*  |processedAt           |=> Date object, reflects moment transaction was made|
 |               |mode                  |=> "credit" or "debit"                              |
 |               |amount                |=> integer                                          |
 |               |balanceAfter          |=> integer                                          |
