@@ -2,9 +2,11 @@
     "env": {
         "browser": true,
         "es6": true,
-        "node": true
+        "node": true,
+        "jasmine": true
     },
-    "extends": "eslint:recommended",
+    "plugins": ["jasmine"],
+    "extends": ["eslint:recommended", "plugin:jasmine/recommended"],
     "globals": {
         "Atomics": "readonly",
         "SharedArrayBuffer": "readonly"
