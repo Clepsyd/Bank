@@ -19,5 +19,12 @@ describe('Account', () => {
       expect(account.balance).toEqual(100);
     });
   });
-    
+  
+  describe('#withdraw', () => {
+    it('subtracts an amount from the balance', () => {
+      account.deposit(100);
+      account.withdraw(50);
+      expect(account.balance).toEqual(50);
+    });
+  });
 });
