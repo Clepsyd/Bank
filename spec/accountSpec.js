@@ -4,9 +4,11 @@ describe('Account', () => {
   let account;
 
   class mockTransaction {
-    constructor(mode, amount) {
+    constructor(mode, amount, balanceAfter) {
       this.mode = mode;
       this.amount = amount;
+      this.balanceAfter = balanceAfter;
+      this.processedAt = new Date();
     }
   }
 
@@ -27,12 +29,13 @@ describe('Account', () => {
       expect(account.balance).toEqual(100);
     });
 
-    it('adds a "credit" transaction to transactions with the correct amount', () => {
+    it('adds a "credit" transaction to transactions with the correct amount and the final balance', () => {
       account.deposit(100);
       let transaction = account.transactions[0];
 
       expect(transaction.amount).toEqual(100);
       expect(transaction.mode).toEqual("credit");
+      expect(transaction.balanceAfter).toEqual(100);
     });
   });
   
@@ -50,13 +53,14 @@ describe('Account', () => {
       expect(() => { account.withdraw(101) }).toThrowError("Funds insufficient!");
     });
 
-    it('adds a "debit" transaction to transactions with the correct amount', () => {
+    it('adds a "debit" transaction to transactions with the correct amount and the final balance', () => {
       account.deposit(100);
-      account.withdraw(50);
+      account.withdraw(25);
       let transaction = account.transactions.slice(-1)[0];
 
-      expect(transaction.amount).toEqual(50);
+      expect(transaction.amount).toEqual(25);
       expect(transaction.mode).toEqual("debit");
+      expect(transaction.balanceAfter).toEqual(75);
     });
   });
 
@@ -67,6 +71,12 @@ describe('Account', () => {
       account.transactions.push(transaction1, transaction2);
 
       expect(account.transactions).toEqual(["transaction1", "transaction2"])
+    });
+  });
+
+  describe('#statement', () => {
+    it('outputs a statement with all transactions to stdout', () => {
+      
     });
   });
 });
