@@ -82,7 +82,8 @@ describe('Account', () => {
     it('shows a statement', () => {
       spyOn(account.StatementClass.prototype, 'show');
       account.statement();
-      expect(account.StatementClass.prototype.show).toHaveBeenCalled();
+
+      expect(account.StatementClass.prototype.show).toHaveBeenCalledWith();
     });
   });
 });
