@@ -18,7 +18,7 @@ describe('Transaction', () => {
     expect(() => new Transaction("credit", 25)).toThrowError("An argument missing, can not create transaction.");
   });
 
-  it('records the time at which it is created', () => {
+  it('records the date and time at which it is created', () => {
     let dateMock = new Date('December 17, 1995 03:24:00');
     jasmine.clock().mockDate(dateMock);
     transaction = new Transaction("debit", 20, 80);

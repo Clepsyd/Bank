@@ -3,22 +3,21 @@ describe('Account', () => {
   const Account = require("../lib/account");
   let account;
 
-  class mockTransaction {
+  class mockTransactionClass {
     constructor(mode, amount, balanceAfter) {
       this.mode = mode;
       this.amount = amount;
       this.balanceAfter = balanceAfter;
-      this.processedAt = new Date();
+    }
+  }
+
+  class mockStatementClass {
+    show(){
     }
   }
 
   beforeEach( () => {
-    account = new Account(mockTransaction);
-    jasmine.clock().install();
-  });
-
-  afterEach( () => {
-    jasmine.clock().uninstall();
+    account = new Account(mockTransactionClass, mockStatementClass);
   });
 
   describe('#balance', () => {
@@ -80,17 +79,10 @@ describe('Account', () => {
   });
 
   describe('#statement', () => {
-    it('outputs a statement with all transactions to stdout', () => {
-      let dateMock = new Date('December 17, 1995 03:24:00');
-      jasmine.clock().mockDate(dateMock);
-      account.deposit(100);
-      account.withdraw(25);
-      spyOn(console, 'log');
+    it('shows a statement', () => {
+      spyOn(account.StatementClass.prototype, 'show');
       account.statement();
-
-      expect(console.log.calls.argsFor(0).pop()).toEqual("date || credit || debit || balance");
-      expect(console.log.calls.argsFor(1).pop()).toEqual("17/12/1995 ||   || 25.00 || 75.00");
-      expect(console.log.calls.argsFor(2).pop()).toEqual("17/12/1995 || 100.00 ||   || 100.00");
+      expect(account.StatementClass.prototype.show).toHaveBeenCalled();
     });
   });
 });
