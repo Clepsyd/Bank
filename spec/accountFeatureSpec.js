@@ -1,5 +1,5 @@
 describe('Feature - Account', () => {
-  dateToString = require("./helpers/dateHelper");
+  const dateToString = require("./helpers/dateHelper");
   
   const Account = require('../lib/account');
   const today = dateToString(new Date());
