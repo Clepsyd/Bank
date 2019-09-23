@@ -77,20 +77,18 @@ describe('Account', () => {
   describe('#statement', () => {
     it('outputs a statement with all transactions to stdout', () => {
       let dateMock = new Date('December 17, 1995 03:24:00');
+      jasmine.clock().install();
       jasmine.clock().mockDate(dateMock);
       account.deposit(100);
       account.withdraw(25);
       spyOn(console, 'log');
       account.statement();
 
-      // expect(console.log).toHaveBeenCalledWith(
-      //   "date || credit || debit || balance",
-      //   "17/12/1995 ||   || 25.00 || 75.00",
-      //   "17/12/1995 || 100 ||   || 100.00"
-      // );
       expect(console.log.calls.argsFor(0).pop()).toEqual("date || credit || debit || balance");
       expect(console.log.calls.argsFor(1).pop()).toEqual("17/12/1995 ||   || 25.00 || 75.00");
       expect(console.log.calls.argsFor(2).pop()).toEqual("17/12/1995 || 100.00 ||   || 100.00");
+
+      jasmine.clock().uninstall();
     });
   });
 });
