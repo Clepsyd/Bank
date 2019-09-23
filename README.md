@@ -22,6 +22,23 @@
 
 For a detailed breakdown of the model, please refer to the [domain model here](DomainModel.md)
 
+You only need 4 instance methods from the Account class:
+- #deposit(_amount_) _-> undefined_
+
+    adds an integer _amount_ to the account's balance.
+
+- #withdraw(_amount_) _-> unedfined_
+
+    substracts an integer _amount_ from the account's balance.
+
+- #balance _-> int_
+
+    returns the current balance for the account.
+
+- #statement _-> undefined_
+
+    outputs to stdout a summary of all transactions that occurred on the account.
+
 Usage example:
 
 ```javascript
