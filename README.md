@@ -36,7 +36,9 @@
 
     outputs to stdout a summary of all transactions that occurred on the account.
 
-_For a detailed breakdown of the model, please refer to the [domain model here](DomainModel.md)_
+_Here's a detailed breakdown of the model:_
+
+![img](assets/DomainModel.png)
 
 ### Usage example:
 
