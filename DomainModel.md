@@ -1,7 +1,7 @@
 |    Objects    |      Methods         |                 Behaviours                         |
 |---------------|----------------------|----------------------------------------------------|
-|*Account*      |_balance               |=> integer                                          |
-|               |_transactions          |=> Array of transactions                            |
+|*Account*      |_balance              |=> integer                                          |
+|               |_transactions         |=> Array of transactions                            |
 |               |deposit(amount :int)  |=> changes balance by +amount,                      |
 |               |                      |=> pushes a "credit" transaction to transactions    |
 |               |withdraw(amount :int) |=> changes balance by -amount,                      |
@@ -9,7 +9,7 @@
 |               |                      |=> raises an error if balance - amount < 0          |
 |               |statement()           |=> calls show on an instance of this.StatementClass |
 |*Transaction*  |processedAt           |=> Date object, reflects moment transaction was made|
-|               |mode                  |=> "credit" or "debit"                              |
+|               |type                  |=> "credit" or "debit"                              |
 |               |amount                |=> integer                                          |
 |               |balanceAfter          |=> integer                                          |
 |*Statement*    |show()                |=> output a statement of all transactions to stdout |
