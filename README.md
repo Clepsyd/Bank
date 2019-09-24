@@ -13,27 +13,21 @@
 
     - Run the tests: `npm test`
 
-    - Run the tests with code coverage report: `npm run coverage`
+    - Run the tests with code coverage report: `npm run coverage -s`
+
+    - Run the linter with ESLint: `npm run lint -s` (no output = linter passed)
 
 ## Usage
 
-- Start node: `node`
-
-- Load the account model: `require('./lib/account')`
-
-### You only need 4 instance methods from the Account class:
+### Account public instance methods:
 
 - #deposit(_amount_) _-> undefined_
 
-    adds an integer _amount_ to the account's balance.
+    adds an integer _amount_ to the account's balance and returns a Transaction object.
 
-- #withdraw(_amount_) _-> unedfined_
+- #withdraw(_amount_) _-> Transaction_
 
-    substracts an integer _amount_ from the account's balance.
-
-- #balance _-> int_
-
-    returns the current balance for the account.
+    substracts an integer _amount_ from the account's balance and returns a Transaction object.
 
 - #statement _-> undefined_
 
@@ -41,19 +35,24 @@
 
 _For a detailed breakdown of the model, please refer to the [domain model here](DomainModel.md)_
 
-Usage example:
+### Usage example:
 
+_In your terminal:_
+
+```bash
+$ node -r .
+```
+_This will open the node REPL loaded with an Account constructor pre-loaded_
+********
+**Browser alternative to node:** _open index.html in your browser and open the console_
+********
 ```javascript
 let account = new Account();
-account.balance // => 0
 
 account.deposit(20)
-account.balance // => 20
-
 account.withdraw(5)
-account.balance // => 15
 
-account.statement 
+account.statement() 
 /*
 outputs the following:
 
@@ -62,3 +61,7 @@ date || credit || debit || balance
 10/01/2012 || 20.00 || || 20.00
 */
 ```
+
+Screenshot:
+
+![img](assets/Example.png)
