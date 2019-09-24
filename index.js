@@ -1,0 +1,1 @@
+globalThis.Account = require("./lib/account");
