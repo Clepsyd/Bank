@@ -45,7 +45,7 @@ _In your terminal:_
 ```bash
 $ node -r .
 ```
-_This will open the node REPL loaded with an Account constructor pre-loaded_
+_This will open the node REPL pre-loaded with an Account constructor_
 ********
 **Browser alternative to node:** _open index.html in your browser and open the console_
 ********
