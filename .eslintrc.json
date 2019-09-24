@@ -9,7 +9,8 @@
     "extends": ["eslint:recommended", "plugin:jasmine/recommended"],
     "globals": {
         "Atomics": "readonly",
-        "SharedArrayBuffer": "readonly"
+        "SharedArrayBuffer": "readonly",
+        "globalThis": false
     },
     "parserOptions": {
         "ecmaVersion": 2018,
