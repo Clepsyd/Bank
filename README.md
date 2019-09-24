@@ -8,21 +8,22 @@
 - If Node.js isn't installed on your system, follow the instructions here: https://nodejs.org/
 
 - If you wish to run the test suite:
-    - Install the dependencies:
 
-    `npm install`
-    - Run the tests:
+    - Install the dependencies: `npm install`
 
-    `npm test`
-    - Run the tests with code coverage report:
+    - Run the tests: `npm test`
 
-    `npm run coverage`
+    - Run the tests with code coverage report: `npm run coverage`
 
 ## Usage
 
-For a detailed breakdown of the model, please refer to the [domain model here](DomainModel.md)
+- Start node: `node`
 
-Usage example:
+- Load the account model: `require('./lib/account')`
+
+- Usage example:
+
+    _For a detailed breakdown of the model, please refer to the [domain model here](DomainModel.md)_
 
 ```javascript
 let account = new Account();
