@@ -1,7 +1,7 @@
 |    Objects    |      Methods         |                 Behaviours                         |
 |---------------|----------------------|----------------------------------------------------|
-|*Account*      |balance               |=> integer                                          |
-|               |transactions          |=> Array of transactions                            |
+|*Account*      |_balance               |=> integer                                          |
+|               |_transactions          |=> Array of transactions                            |
 |               |deposit(amount :int)  |=> changes balance by +amount,                      |
 |               |                      |=> pushes a "credit" transaction to transactions    |
 |               |withdraw(amount :int) |=> changes balance by -amount,                      |
@@ -13,7 +13,7 @@
 |               |amount                |=> integer                                          |
 |               |balanceAfter          |=> integer                                          |
 |*Statement*    |show()                |=> output a statement of all transactions to stdout |
-|               |transactions          |=> transactions for which the statement is created  |
+|               |_transactions          |=> transactions for which the statement is created  |
 
 _* output for Statement#show should be like so:_
 ```

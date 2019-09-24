@@ -5,6 +5,9 @@
 - Clone this repo:
 `git clone git@github.com:Clepsyd/Bank.git`
 
+- Make sure you're in the top level directory:
+`cd Bank`
+
 - If Node.js isn't installed on your system, follow the instructions here: https://nodejs.org/
 
 - If you wish to run the test suite:
