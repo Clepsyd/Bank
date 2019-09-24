@@ -2,10 +2,11 @@ describe('Account', () => {
   
   const Account = require("../lib/account");
   let account;
+  let mockTransaction;
 
   class mockTransactionClass {
-    constructor(mode, amount, balanceAfter) {
-      this.mode = mode;
+    constructor(type, amount, balanceAfter) {
+      this.type = type;
       this.amount = amount;
       this.balanceAfter = balanceAfter;
     }
@@ -20,61 +21,26 @@ describe('Account', () => {
     account = new Account(mockTransactionClass, mockStatementClass);
   });
 
-  describe('#balance', () => {
-    it('returns 0 by default', () => {
-      expect(account.balance).toEqual(0);
-    });
-  });
-
   describe('#deposit', () => {
     it('adds an amount to the balance', () => {
-      account.deposit(100);
+      mockTransaction = new mockTransactionClass("credit", 100, 100);
 
-      expect(account.balance).toEqual(100);
-    });
-
-    it('adds a "credit" transaction to transactions with the correct amount and the final balance', () => {
-      account.deposit(100);
-      let transaction = account.transactions[0];
-
-      expect(transaction.amount).toEqual(100);
-      expect(transaction.mode).toEqual("credit");
-      expect(transaction.balanceAfter).toEqual(100);
+      expect(account.deposit(100)).toEqual(mockTransaction);
     });
   });
   
   describe('#withdraw', () => {
     it('subtracts an amount from the balance', () => {
-      account.deposit(100);
-      account.withdraw(50);
+      account.deposit(30);
+      mockTransaction = new mockTransactionClass('debit', 10, 20);
 
-      expect(account.balance).toEqual(50);
+      expect(account.withdraw(10)).toEqual(mockTransaction);
     });
 
     it('raises an error if trying to withdraw more than current balance', () => {
       account.deposit(100);
 
       expect(() => { account.withdraw(101) }).toThrowError("Funds insufficient!");
-    });
-
-    it('adds a "debit" transaction to transactions with the correct amount and the final balance', () => {
-      account.deposit(100);
-      account.withdraw(25);
-      let transaction = account.transactions.slice(-1)[0];
-
-      expect(transaction.amount).toEqual(25);
-      expect(transaction.mode).toEqual("debit");
-      expect(transaction.balanceAfter).toEqual(75);
-    });
-  });
-
-  describe('#transactions', () => {
-    it('returns and array of transactions', () => {
-      let transaction1 = "transaction1";
-      let transaction2 = "transaction2";
-      account.transactions.push(transaction1, transaction2);
-
-      expect(account.transactions).toEqual(["transaction1", "transaction2"])
     });
   });
 

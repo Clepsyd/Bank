@@ -4,25 +4,25 @@ describe('Statement', () => {
   let statement;
 
   beforeEach( () => {
-    let dateMock = new Date('December 17, 1995 03:24:00');
+    let mockDate = new Date('December 17, 1995 03:24:00');
     let mockTransaction1 = jasmine.createSpyObj(
       "transaction1",
       {},
       {
-        'mode': "credit",
+        'type': "credit",
         'amount': 100,
         'balanceAfter': 100,
-        'processedAt': dateMock
+        'processedAt': mockDate
       }
     );
     let mockTransaction2 = jasmine.createSpyObj(
       "transaction2",
       {},
       {
-        'mode': "debit",
+        'type': "debit",
         'amount': 25,
         'balanceAfter': 75,
-        'processedAt': dateMock
+        'processedAt': mockDate
       }
     );
     let transactions = [mockTransaction1, mockTransaction2];
