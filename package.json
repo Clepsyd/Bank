@@ -4,8 +4,8 @@
   "description": "Program modeling a bank account",
   "main": "index.js",
   "scripts": {
-    "test": "jasmine --reporter=jasmine-console-reporter",
-    "coverage": "nyc -x 'spec/' npm run test",
+    "test": "node node_modules/jasmine/bin/jasmine.js --reporter=jasmine-console-reporter",
+    "coverage": "nyc -x 'spec/' npm test",
     "lint": "eslint ."
   },
   "author": "GL",
