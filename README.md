@@ -10,6 +10,8 @@
 
 - If Node.js isn't installed on your system, follow the instructions here: https://nodejs.org/
 
+    **N.B: This program requires node.js v10.16.3 or more recent to work**
+
 - If you wish to run the test suite:
 
     - Install the dependencies: `npm install`
