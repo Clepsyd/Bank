@@ -1,4 +1,4 @@
-# Bank account Model (_Bank_ tech test)
+# Bank account Model (_Bank_ tech test)   [![Build Status](https://travis-ci.com/Clepsyd/Bank.svg?branch=master)](https://travis-ci.com/Clepsyd/Bank)
 
 ## Installation
 
