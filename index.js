@@ -1,1 +1,1 @@
-globalThis.Account = require("./lib/account");
+global.Account = require("./lib/account");
